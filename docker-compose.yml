@@ -1,0 +1,14 @@
+version: '2'
+# Docker Compose bind mount for web developer
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: nginx.Dokerfile
+    image: nginx-custom
+    ports:
+      - '80:80'
+  web:
+    image: httpd
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/
